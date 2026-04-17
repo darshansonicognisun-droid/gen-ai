@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>RakshakAI — Indian Legal Assistant</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}" />
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════════
+     SIDEBAR
+═══════════════════════════════════════════════ -->
+<aside class="sidebar" id="sidebar">
+
+  <!-- Brand -->
+  <div class="sidebar-header">
+    <div class="brand">
+      <div class="brand-icon">⚖️</div>
+      <span class="brand-name">RakshakAI</span>
+    </div>
+    <button class="icon-btn sidebar-close" id="sidebarClose" title="Close sidebar">✕</button>
+  </div>
+
+  <!-- New Chat -->
+  <button class="new-chat-btn" id="newChatBtn">
+    <span class="new-chat-icon">＋</span>
+    New Chat
+  </button>
+
+  <!-- Chat list -->
+  <div class="chat-list-section">
+    <p class="chat-list-label">Recent Chats</p>
+    <ul class="chat-list" id="chatList">
+      <li class="chat-list-empty">No chats yet</li>
+    </ul>
+  </div>
+
+  <!-- Footer -->
+  <div class="sidebar-footer">
+    <div class="status-dot"></div>
+    <span>Powered by Groq · Llama 3.3</span>
+  </div>
+</aside>
+
+<!-- Overlay for mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ═══════════════════════════════════════════════
+     MAIN AREA
+═══════════════════════════════════════════════ -->
+<main class="main" id="main">
+
+  <!-- Top bar -->
+  <header class="topbar">
+    <button class="icon-btn hamburger" id="hamburger" title="Open sidebar">
+      <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+        <rect y="3"  width="20" height="2" rx="1" fill="currentColor"/>
+        <rect y="9"  width="20" height="2" rx="1" fill="currentColor"/>
+        <rect y="15" width="20" height="2" rx="1" fill="currentColor"/>
+      </svg>
+    </button>
+    <span class="topbar-title" id="topbarTitle">RakshakAI</span>
+    <div class="topbar-actions">
+      <button class="icon-btn" id="statsBtn" title="Stats">📊</button>
+      <button class="icon-btn" id="resetBtn" title="Clear chat">🔄</button>
+    </div>
+  </header>
+
+  <!-- Messages -->
+  <div class="messages-wrap" id="messagesWrap">
+    <!-- Welcome screen -->
+    <div class="welcome" id="welcome">
+      <div class="welcome-icon">⚖️</div>
+      <h1 class="welcome-title">RakshakAI</h1>
+      <p class="welcome-sub">Your guide to Indian laws &amp; legal rights</p>
+      <div class="suggestions" id="suggestionsArea">
+        <button class="chip" data-q="What are my fundamental rights under the Indian Constitution?">Fundamental Rights</button>
+        <button class="chip chip-navy" data-q="Explain Article 21 — Right to Life and Personal Liberty">Article 21 explained</button>
+        <button class="chip chip-green" data-q="What is the procedure to file an FIR under CrPC?">How to file an FIR</button>
+        <button class="chip" data-q="What are consumer rights under the Consumer Protection Act 2019?">Consumer Rights</button>
+      </div>
+    </div>
+
+    <!-- Chat bubbles rendered here -->
+    <div class="messages" id="messages"></div>
+  </div>
+
+  <!-- Stats bar (hidden by default) -->
+  <div class="stats-bar" id="statsBar" style="display:none">
+    <span id="statsText">—</span>
+    <button class="stats-close" onclick="document.getElementById('statsBar').style.display='none'">✕</button>
+  </div>
+
+  <!-- Input -->
+  <div class="input-area">
+    <div class="input-box" id="inputBox">
+      <textarea
+        id="userInput"
+        placeholder="Ask about Indian laws, rights, legal procedures…"
+        rows="1"
+        maxlength="2000"
+      ></textarea>
+      <button class="send-btn" id="sendBtn" title="Send">
+        <svg width="20" height="20" viewBox="0 0 20 20" fill="none">
+          <path d="M2 10L18 2L13 18L10 11L2 10Z" fill="currentColor"/>
+        </svg>
+      </button>
+    </div>
+    <p class="input-hint">RakshakAI may be incorrect. Consult a lawyer for legal advice.</p>
+  </div>
+</main>
+
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>

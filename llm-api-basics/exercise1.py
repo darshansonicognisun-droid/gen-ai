@@ -63,7 +63,7 @@ make_api_call(
 )
 
 make_api_call(
-    model="openait-oss-120b",
+    model="openai/gpt-oss-120b",
     temperature=0.7,
     message=message,
     max_tokens=1024,
