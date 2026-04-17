@@ -1,0 +1,3 @@
+Username: darshansonicognisun_db_user
+Password: uOEY7vyM2J5K2giB
+Connection String: mongodb+srv://darshansonicognisun_db_user:uOEY7vyM2J5K2giB@cluster0.5cqepwf.mongodb.net/
